@@ -31,7 +31,7 @@ The NBA game data from here: http://www.basketball-reference.com/leagues/NBA_201
 	# Spark SQL 
 	$ dfPlayers = sqlContext.sql("select age-min_age as exp,stats_tb.* from stats_tb join (select Player,min(age)as min_age from stats_tb group by Player) as t1 on stats_tb.Player=t1.Player order by stats_tb.Player, exp ")
  	$ dfPlayers # Check type
-	$ dfPlayers.saveAsTable("xxx.Players") # Without xxx, it will be saved to default database
+	$ dfPlayers.saveAsTable("xxx.Players") # Without xxx, it will be saved to default database; save to Hive
 	
 	hive> show tables; # Check if table saved in hive
 	hive> select * from players limit 5;
